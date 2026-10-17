@@ -1,12 +1,12 @@
 #!/bin/bash
 # Day 2 lab setup: vi, shell script, hardware, process, system logs
 # Run as your normal user:  bash day2_setup.sh
-# Creates ~/lab2 (old ~/lab2 is deleted and rebuilt), ~/bin and ~/backups
+# Creates ~/lab2 (old ~/lab2 is deleted and rebuilt) and ~/bin
 
 LAB="$HOME/lab2"
 echo "== Setting up $LAB =="
 rm -rf "$LAB"
-mkdir -p "$LAB" "$HOME/bin" "$HOME/backups"
+mkdir -p "$LAB" "$HOME/bin"
 cd "$LAB" || exit 1
 
 # ---------- Lab E part 2: sample auth log for grep practice ----------
@@ -67,7 +67,7 @@ cp server_notes.txt server_notes.orig
 echo
 echo "Done. Created:"
 echo "  $LAB/server_notes.txt  (Lab A: fix this file with vi)"
-echo "  $HOME/bin and $HOME/backups (Lab B: shell scripts)"
+echo "  $HOME/bin                    (Lab B: shell script)"
 echo "  $LAB/auth_sample.log   (Lab E: grep practice)"
 
 # Lab C and Lab D need these commands (Ubuntu Server may not have them yet)
