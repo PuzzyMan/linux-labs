@@ -1,5 +1,5 @@
 #!/bin/bash
-# Day 2 lab setup (Lab 10-11)
+# Day 2 lab setup: vi, shell script, hardware, process, system logs
 # Run as your normal user:  bash day2_setup.sh
 # Creates ~/lab2 (old ~/lab2 is deleted and rebuilt), ~/bin and ~/backups
 
@@ -9,7 +9,7 @@ rm -rf "$LAB"
 mkdir -p "$LAB" "$HOME/bin" "$HOME/backups"
 cd "$LAB" || exit 1
 
-# ---------- Lab B / mini project: sample auth log ----------
+# ---------- Lab E part 2: sample auth log for grep practice ----------
 cat > auth_sample.log <<'EOF'
 2026-10-09 08:01:12 sshd[1201]: Accepted password for alice from 192.168.1.15 port 52100 ssh2
 2026-10-09 08:03:40 sshd[1202]: Failed password for root from 203.0.113.99 port 40122 ssh2
@@ -49,7 +49,7 @@ cat > auth_sample.log <<'EOF'
 2026-10-09 10:59:59 sshd[1331]: Connection closed by 203.0.113.99 port 40401 [preauth]
 EOF
 
-# ---------- Lab C: broken file for vi ----------
+# ---------- Lab A: broken file for vi ----------
 cat > server_notes.txt <<'EOF'
 Server Notes
 ============
@@ -66,9 +66,16 @@ cp server_notes.txt server_notes.orig
 
 echo
 echo "Done. Created:"
-echo "  $LAB/auth_sample.log   (Lab B + mini project)"
-echo "  $LAB/server_notes.txt  (Lab C: fix this file with vi)"
-echo "  $HOME/bin and $HOME/backups (Lab D scripts)"
+echo "  $LAB/server_notes.txt  (Lab A: fix this file with vi)"
+echo "  $HOME/bin and $HOME/backups (Lab B: shell scripts)"
+echo "  $LAB/auth_sample.log   (Lab E: grep practice)"
+
+# Lab C and Lab D need these commands (Ubuntu Server may not have them yet)
+missing=""
+for c in lspci lsusb killall; do command -v "$c" >/dev/null 2>&1 || missing="$missing $c"; done
+if [ -n "$missing" ]; then
+  echo; echo "NOTE: missing:$missing  -> install with:  sudo apt install pciutils usbutils psmisc"
+fi
 case ":$PATH:" in
   *":$HOME/bin:"*) ;;
   *) echo; echo "NOTE: ~/bin is not in PATH yet. Run:  source ~/.profile   (or log out and in)";;
