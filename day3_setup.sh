@@ -1,7 +1,7 @@
 #!/bin/bash
 # Day 3 lab setup (Lab 14-18): network, users and groups, permissions, special permissions, links
 # Run as your normal user:   bash day3_setup.sh
-#   Creates ~/lab3 (old ~/lab3 is deleted and rebuilt) with answers.txt to fill in.
+#   Creates ~/lab3 (old ~/lab3 is deleted and rebuilt). Write your answers on the answer sheet.
 # Start the user part again:  bash day3_setup.sh --reset
 #   Uses sudo to delete what the lab created outside ~/lab3:
 #   users manee mana piti chujai, groups account it tech, /srv/dropbox, /srv/itteam,
@@ -61,78 +61,8 @@ cd "$LAB/links" || exit 1
 echo "Linux links lab" > original.txt
 stat -c %i original.txt > .inode          # used by day3_check.sh
 
-# ---------- answer file ----------
-cat > "$LAB/answers.txt" <<'EOF'
-# Day 3 answers: write each answer right after the = sign, then save.
-# Example:  A3=192.168.1.1     Answers are short: a name, a number, yes or no.
-# Check your score any time:  bash day3_check.sh
-
-# ===== Lab A: network (Lab 14) =====
-# A1 name of your network card (not lo)
-A1=
-# A2 your IPv4 address with the prefix, e.g. 192.168.1.10/24
-A2=
-# A3 default gateway (router) IP
-A3=
-# A4 nameserver written in /etc/resolv.conf
-A4=
-# A5 real DNS server from resolvectl status
-A5=
-# A6 IP address of github.com from your dig_github.txt
-A6=
-# A7 TCP port that ssh listens on (ss -tln)
-A7=
-# A8 key type shown the first time you ssh to localhost (e.g. RSA)
-A8=
-# A9 how your card gets its IP in netplan: dhcp or static
-A9=
-
-# ===== Lab B: users and groups (Lab 15-16) =====
-# B1 your UID
-B1=
-# B2 login shell of the user www-data
-B2=
-# B3 first 3 characters of your password hash in /etc/shadow
-B3=
-# B4 default SHELL from useradd -D
-B4=
-# B5 can you su - piti after piti is locked? yes or no
-B5=
-
-# ===== Lab C: owner and permissions (Lab 17) =====
-# C1 octal permissions of perm/report.txt BEFORE you change it
-C1=
-# C2 first character of ls -l /etc/localtime
-C2=
-# C3 your umask
-C3=
-# C4 octal permissions of a new file you create with touch
-C4=
-# C5 after chown, can you (not manee) add a line to report.txt? yes or no
-C5=
-
-# ===== Lab D: special permissions and links (Lab 18) =====
-# D1 octal permissions of /usr/bin/passwd
-D1=
-# D2 how many setuid programs are in /usr/bin
-D2=
-# D3 group owner of /usr/bin/chage (it has setgid)
-D3=
-# D4 octal permissions of /tmp
-D4=
-# D5 can mana delete manee.txt in /srv/dropbox? yes or no
-D5=
-# D6 link count of original.txt after you make hard.txt
-D6=
-# D7 do original.txt and hard.txt have the same inode? yes or no
-D7=
-# D8 after rm original.txt, which file still shows the text: hard or soft
-D8=
-EOF
-
 echo
 echo "Done. Created:"
-echo "  $LAB/answers.txt   (write your answers here, e.g. nano ~/lab3/answers.txt)"
 echo "  $LAB/perm/         (Lab C: files to read and fix)"
 echo "  $LAB/links/        (Lab D: original.txt for links)"
 
